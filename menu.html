@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Menu</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="logo.webp">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            text-align: center;
+            padding: 20px;
+            background-image: url('background5.webp');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .product {
+            background: white;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 200px;
+        }
+        .product img {
+            width: 100%;
+            border-radius: 8px;
+        }
+        .product p {
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        button {
+            background: #ff9800;
+            border: none;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #e68900;
+        }
+        #cart-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #ff9800;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .product:hover {
+    transform: translateY(-20px);
+}
+
+        footer {
+    background-color: #2c2c2c;
+    color: white;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 20px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 250px;
+}
+
+.footer-section h3 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    color: #ffcc00;
+}
+
+.footer-section p,
+.footer-section a {
+    font-size: 16px;
+    color: #ddd;
+    text-decoration: none;
+}
+
+.footer-section a:hover {
+    color: #ffcc00;
+    text-decoration: underline;
+}
+
+/* Social Media Icons */
+.footer-section img {
+    margin-top: 5px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.footer-section img:hover {
+    transform: scale(1.2);
+}
+
+/* Newsletter */
+.newsletter-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.newsletter-form input {
+    width: 80%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.newsletter-form button {
+    width: 85%;
+    padding: 10px;
+    background-color: #ffcc00;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+}
+
+.newsletter-form button:hover {
+    background-color: #d4a500;
+}
+
+/* Footer Bottom */
+.footer-bottom {
+    background-color: #222;
+    padding: 10px;
+    margin-top: 20px;
+    font-size: 14px;
+}
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+    <h1 style="background-color: white;">Our Menu</h1>
+    <div class="container">
+        <div class="product">
+            <img src="baguettes.jpg" alt="Baguettes">
+            <p>French retail baguette</p>
+            <p>KES 189 • 360g</p>
+            <button onclick="addToCart('Baguettes', 189)">Add to Cart</button>
+        </div>
+
+        <div class="product">
+            <img src="400g.webp" alt="Bread">
+            <p>Bread • 400g - KES 65</p>
+            <button onclick="addToCart('400g bread', 65)">Add to Cart</button>
+        </div>
+
+        <div class="product">
+            <img src="600g.png" alt="Bread">
+            <p>Bread • 600g - KES 100</p>
+            <button onclick="addToCart('600g Bread', 100)">Add to Cart</button>
+        </div>
+
+        <div class="product">
+            <img src="800g.jpg" alt="Bread">
+            <p>Supa Loaf White Bread 800g</p>
+            <p>KES 120</p>
+            <button onclick="addToCart('Super Loaf Bread', 120)">Add to Cart</button>
+        </div>
+
+        <div class="product">
+            <img src="b400g.avif" alt="Bread">
+            <p> Supa Loaf Brown Sliced Bread 400g </p>
+            <p>KES 65</p>
+            <button onclick="addToCart('400g Supa Loaf Brown Bread', 65)">Add to Cart</button>
+        </div>
+
+        <div class="product">
+            <img src="sourdough.avif" alt="Sourdough">
+            <p>Country Style Sourdough Bread </p>
+            <p>KES 759 • Brand: Brownberry</p>
+            <button onclick="addToCart('Sourdough', 759)">Add to Cart</button>
+        </div>
+
+        <div class="product">
+            <img src="chocolate.jpg" alt="Bread">
+            <p>Triple layer chocolate cake</p>
+            <p>1Kg • KES 2,500</p>
+            <button onclick="addToCart('1Kg Triple layer chocolate cake', 2500)">Add to Cart</button>
+        </div>
+
+        <div class="product">
+            <img src="vanilla.jpg" alt="Vanilla cake">
+            <p>Triple layer vanilla cake</p>
+            <p>1Kg • KES 3,900</p>
+            <button onclick="addToCart('1kg Triple layer vanilla cake', 3500)">Add to Cart</button>
+        </div>
+
+        <div class="product">
+            <img src="valvet.jpg" alt="red velvet">
+            <p>Red Velvet Cake</p>
+            <p>1Kg • KES 4,800</p>
+            <button onclick="addToCart('1Kg Red velvet Cake', 4800)">Add to Cart</button>
+        </div>
+
+        <div class="product">
+            <img src="manji.avif" alt="Drop Cookies">
+            <p>Manji Chocolate chip Cookies</p>
+            <p>500g • KES 650</p>
+            <button onclick="addToCart('Manji Chocolate chip Cookies', 650)">Add to Cart</button>
+        </div>
+
+        <div class="product">
+            <img src="oatmeal.jpg" alt="Drop cookies">
+            <p>Classic Cookie Soft Oatmeal Raisin Cookies </p>
+            <p>KES 250</p>
+            <button onclick="addToCart('Oatmeal Raisin Cookies', 250)">Add to Cart</button>
+        </div>
+
+        <div class="product">
+            <img src="apple.jpg" alt="Fruit pies">
+            <p>Hostess Snack Size Fruit Pies, Apple, 12 Count</p>
+            <p>KES 520</p>
+            <button onclick="addToCart('Apple Fruit pies', 520)">Add to Cart</button>
+        </div>
+
+        <div class="product">
+            <img src="pecan.webp" alt="Fruit pies">
+            <p>Marie Callender's Southern Pecan Pie, Frozen Dessert, 32 oz (Frozen)</p>
+            <p>KES 1,100</p>
+            <button onclick="addToCart('Pecan pie', 1100)">Add to Cart</button>
+        </div>
+
+        <div class="product">
+            <img src="candy.jpg" alt="Candy">
+            <p>Alpenliebe Chocolate Caramel Eclairs Candy 144g</p>
+            <p>KES 450</p>
+            <button onclick="addToCart('Chocolate carmel Eclairs Candy 144g', 450)">Add to Cart</button>
+        </div>
+
+        <div class="product">
+            <img src="coffee.jpg" alt="Coffee Eclairs">
+            <p>Brown Round Alpenliebe Eclairs Plus Coffee Candy</p>
+            <p>630g • KES 899</p>
+            <button onclick="addToCart('Brown Eclairs plus Coffee Candy', 100)">Add to Cart</button>
+        </div>
+    </div>
+    <a href="cart.html" id="cart-button">🛒 Cart (<span id="cart-count">0</span>)</a>
+    <script>
+        function updateCartCount() {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            document.getElementById('cart-count').innerText = cart.length;
+        }
+        function addToCart(name, price) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.push({ name, price, quantity: 1 });
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCount();
+        }
+        updateCartCount();
+    </script>
+</body>
+
+<footer>
+    <div class="footer-container">
+        <!-- Contact Us -->
+        <div class="footer-section">
+          <h3>Contact Us</h3>
+          <div style="margin-bottom: 20px;">
+              <a href="mailto:stanleymakanga45@gmail.com" style="display: flex; align-items: center; text-decoration: none; background-color: #D14836; color: white; padding: 10px 15px; border-radius: 5px; width: fit-content;">
+                  <img src="email.png" alt="Gmail Logo" style="width: 24px; height: 24px; margin-right: 10px;">
+                  <span>Email Us</span>
+              </a>
+          </div>
+          
+          <a href="https://wa.me/254746640048" target="_blank" style="display: flex; align-items: center; text-decoration: none; background-color: #25D366; color: white; padding: 10px 15px; border-radius: 5px; width: fit-content;">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Logo" style="width: 24px; height: 24px; margin-right: 10px;">
+              <span>Chat with us</span>
+          </a>
+          
+          <p>Address: Lenana, along Ngong road Nairobi, Kenya</p>
+        </div>
+  
+      <!-- Quick Links -->
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <p><a href="index.html">Back Home</a></p>
+        <p><a href="faq.html">FAQ</a></p>
+        <p><a href="blog.html">Blog</a></p>
+        <p><a href="feedback.html">Feedback & Reviews</a></p>
+        <p><a href="about.html">About Us</a></p>
+      </div>
+  
+      <!-- Social Media -->
+      <div class="footer-section">
+        <h3>Follow Us</h3>
+        <p><a href="https://instagram.com/7_stanley7" target="_blank"><img src="insta.jpg" width="30" alt="Instagram"></a></p>
+        <p><a href="https://www.facebook.com/its.stano" target="_blank"><img src="facebook.png" width="30" alt="Facebook"></a></p>
+        <p><a href="https://x.com/StanleyMakanga2" target="_blank"><img src="x.png" width="30" alt="X(Twitter)"></a></p>
+        <p><a href="https://linkedin.com/in/stanley-makanga-974393349/" target="_blank"><img src="linkedin.png" width="30" alt="Linkedin"></a></p>
+      </div>
+  
+      <!-- Newsletter Subscription -->
+      <div class="footer-section">
+        <h3>Subscribe to Our Newsletter</h3>
+        <form class="newsletter-form">
+          <input type="email" placeholder="Enter your email" required>
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2023-2025 Stanley. All rights reserved.</p>
+    </div>
+  </footer>
+</html>

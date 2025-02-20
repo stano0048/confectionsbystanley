@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confections by Stanley</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="logo.webp">
+
+    <style>
+      body {
+    background-image: url('background6.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.products {
+    display: inline-flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.product {
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    text-align: center;
+    width: 250px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+    padding-bottom: 10px;
+}
+
+.product:hover {
+    transform: translateY(-5px);
+}
+
+.product img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-bottom: 2px solid #d2691e;
+}
+
+.product h2 {
+    color: #4b2e2e;
+    font-size: 20px;
+    margin: 10px 0;
+}
+
+.product p {
+    font-size: 18px;
+    color: #d2691e;
+    font-weight: bold;
+}
+
+.product a {
+    display: block;
+    margin: 5px auto;
+    width: 80%;
+    text-align: center;
+    padding: 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.product a:first-of-type {
+    background-color: #8b4513;
+    color: white;
+}
+
+.product a:last-of-type {
+    background-color: #ff4500;
+    color: white;
+}
+
+.product a:hover {
+    opacity: 0.8;
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="cart.html">Cart</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Welcome Confections by Stanley Bakery!</h1>
+        <p>Freshly Baked Goods, Delivered Right to Your Door.</p>
+        <a href="menu.html" class="btn">Order Now</a>
+    </section>
+
+    <section>
+      <h1 style="color: white; background-color: #25D366; font-size: 3rem; text-align: center;">Price Range for our Products</h1>
+    </section>
+
+    <section class="products">
+        
+        <div class="products">
+            <div class="product">
+                <img src="bread.jpg" alt="Fresh Bread">
+                <h3>Fresh Bread</h3>
+                <p>Basic white/brown loaf: KES 65 - 200</p>
+                <p>Specialty breads (sourdough, rye, etc.): KES 250 - 500</p>
+                <button onclick="window.location.href='menu.html'" style="background-color: grey; color: white; border: none; padding: 10px 20px; cursor: pointer;">
+                    Order Now
+                </button>
+                
+            </div>
+            <div class="product">
+                <img src="layer.jpg" alt="Layer Cakes">
+                <h3>Layer Cakes (1kg)</h3>
+                <p>Basic flavors (vanilla, chocolate): KES 1,500 - 3,000</p>
+                <p>More elaborate (red velvet, fruit): KES 2,500 - 5,000</p>
+                <button onclick="window.location.href='menu.html'" style="background-color: grey; color: white; border: none; padding: 10px 20px; cursor: pointer;">
+                    Order Now
+                </button>
+                
+            </div>
+            <div class="product">
+                <img src="cup.jpg" alt="Cupcakes">
+                <h3>Cupcakes</h3>
+                <p>Per piece: KES 80 - 200</p>
+                <p>Per dozen: KES 800 - 2,000</p>
+                <button onclick="window.location.href='menu.html'" style="background-color: grey; color: white; border: none; padding: 10px 20px; cursor: pointer;">
+                    Order Now
+                </button>
+            </div>
+
+            <div class="product">
+                <img src="cheese.jpg" alt="Cheesecakes">
+                <h3>Cheesecakes</h3>
+                <p>Per slice: KES 300 - 600</p>
+                <p>Whole (1kg): KES 3,000 - 6,000</p>
+                <button onclick="window.location.href='menu.html'" style="background-color: grey; color: white; border: none; padding: 10px 20px; cursor: pointer;">
+                    Order Now
+                </button>
+            </div>
+
+            <div class="product">
+              <img src="rolls.jpg" alt="Rolls and Buns">
+              <h3>Rolls and Buns</h3>
+              <p>Dinner rolls (per dozen): KES 150 - 300</p>
+              <p>Buns (per piece): KES 50 - 100</p>
+              <button onclick="window.location.href='menu.html'" style="background-color: grey; color: white; border: none; padding: 10px 20px; cursor: pointer;">
+                  Order Now
+              </button>
+              
+          </div>
+          <div class="product">
+            <img src="focaccia.jpg" alt="Focaccia/Brioche">
+            <h3>Focaccia/Brioche</h3>
+            <p>From KES 200 - 400</p>
+            <button onclick="window.location.href='menu.html'" style="background-color: grey; color: white; border: none; padding: 10px 20px; cursor: pointer;">
+                Order Now
+            </button>
+            
+        </div>
+        <div class="product">
+            <img src="danishes.jpg" alt="Croissants/Danishes">
+            <h3>Croissants/Danishes</h3>
+            <p>KES 150 - 300 each</p>
+            <button onclick="window.location.href='menu.html'" style="background-color: grey; color: white; border: none; padding: 10px 20px; cursor: pointer;">
+                Order Now
+            </button>
+            
+        </div>
+        <div class="product">
+            <img src="scones.jpg" alt="Scones">
+            <h3>Scones</h3>
+            <p>KES 100 - 250 each</p>
+            <button onclick="window.location.href='menu.html'" style="background-color: grey; color: white; border: none; padding: 10px 20px; cursor: pointer;">
+                Order Now
+            </button>
+            
+        </div>
+        <div class="product">
+            <img src="muffins.jpg" alt="Muffins">
+            <h3>Muffins</h3>
+            <p>KES 100 - 250 each</p>
+            <button onclick="window.location.href='menu.html'" style="background-color: grey; color: white; border: none; padding: 10px 20px; cursor: pointer;">
+                Order Now
+            </button>
+            
+        </div>
+        <div class="product">
+            <img src="pies.jpg" alt="Pies/Tarts">
+            <h3>Pies/Tarts</h3>
+            <p>Small: KES 300 - 600</p>
+            <p>Large: KES 1,000 - 3,000</p>
+            <button onclick="window.location.href='menu.html'" style="background-color: grey; color: white; border: none; padding: 10px 20px; cursor: pointer;">
+                Order Now
+            </button>
+            
+        </div>
+        <div class="product">
+            <img src="cookies.jpg" alt="Cookies">
+            <h3>Cookies</h3>
+            <p>Basic cookies (per piece): KES 50 - 150</p>
+            <p>Specialty cookies (per piece): KES 100 - 300</p>
+            <p>Brownies/Bars: KES 150 - 300 each</p>
+            <button onclick="window.location.href='menu.html'" style="background-color: grey; color: white; border: none; padding: 10px 20px; cursor: pointer;">
+                Order Now
+            </button>
+            
+        </div>
+        <div class="product">
+            <img src="donuts.jpg" alt="Donuts">
+            <h3>Donuts</h3>
+            <p>KES 80 - 200 each</p>
+            <button onclick="window.location.href='menu.html'" style="background-color: grey; color: white; border: none; padding: 10px 20px; cursor: pointer;">
+                Order Now
+            </button>
+            
+        </div>
+        <div class="product">
+            <img src="cinnamon.jpg" alt="Cinnamon Rolls">
+            <h3>Cinnamon Rolls</h3>
+            <p>KES 150 - 300 each</p>
+            <button onclick="window.location.href='menu.html'" style="background-color: grey; color: white; border: none; padding: 10px 20px; cursor: pointer;">
+                Order Now
+            </button>
+            
+        </div>
+        <div class="product">
+            <img src="quiches.jpg" alt="Quiches ">
+            <h3>Quiches (slice)</h3>
+            <p> KES 250 - 500</p>
+            <button onclick="window.location.href='menu.html'" style="background-color: grey; color: white; border: none; padding: 10px 20px; cursor: pointer;">
+                Order Now
+            </button>
+            
+        </div>
+        <div class="product">
+            <img src="pastries.jpg" alt="Savory Pastries">
+            <h3>Savory Pastries</h3>
+            <p>KES 150 - 300 each</p>
+            <button onclick="window.location.href='menu.html'" style="background-color: grey; color: white; border: none; padding: 10px 20px; cursor: pointer;">
+                Order Now
+            </button>
+       
+        </div>
+    </section>
+</body>
+<footer>
+    <div class="footer-container">
+      <!-- Contact Us -->
+      <div class="footer-section">
+        <h3>Contact Us</h3>
+        <div style="margin-bottom: 20px;">
+            <a href="mailto:stanleymakanga45@gmail.com" style="display: flex; align-items: center; text-decoration: none; background-color: #D14836; color: white; padding: 10px 15px; border-radius: 5px; width: fit-content;">
+                <img src="email.png" alt="Gmail Logo" style="width: 24px; height: 24px; margin-right: 10px;">
+                <span>Email Us</span>
+            </a>
+        </div>
+        
+        <a href="https://wa.me/254746640048" target="_blank" style="display: flex; align-items: center; text-decoration: none; background-color: #25D366; color: white; padding: 10px 15px; border-radius: 5px; width: fit-content;">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Logo" style="width: 24px; height: 24px; margin-right: 10px;">
+            <span>Chat with us</span>
+        </a>
+        
+        <p>Address: Lenana, along Ngong road Nairobi, Kenya</p>
+      </div>
+  
+      <!-- Quick Links -->
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <p><a href="index.html">Back Home</a></p>
+        <p><a href="faq.html">FAQ</a></p>
+        <p><a href="blog.html">Blog</a></p>
+        <p><a href="feedback.html">Feedback & Reviews</a></p>
+        <p><a href="about.html">About Us</a></p>
+      </div>
+  
+      <!-- Social Media -->
+      <div class="footer-section">
+        <h3>Follow Us</h3>
+        <p><a href="https://instagram.com/7_stanley7" target="_blank"><img src="insta.jpg" width="30" alt="Instagram"></a></p>
+        <p><a href="https://www.facebook.com/its.stano" target="_blank"><img src="facebook.png" width="30" alt="Facebook"></a></p>
+        <p><a href="https://x.com/StanleyMakanga2" target="_blank"><img src="x.png" width="30" alt="X(Twitter)"></a></p>
+        <p><a href="https://linkedin.com/in/stanley-makanga-974393349/" target="_blank"><img src="linkedin.png" width="30" alt="Linkedin"></a></p>
+      </div>
+  
+      <!-- Newsletter Subscription -->
+      <div class="footer-section">
+        <h3>Subscribe to Our Newsletter</h3>
+        <form class="newsletter-form">
+          <input type="email" placeholder="Enter your email" required>
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2023-2025 Stanley. All rights reserved.</p>
+    </div>
+  </footer>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Online</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body style="background-image: url('background3.webp'); background-size: cover; background-position: center; width: 100%; height: auto;">
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="order.html">Order Online</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="order-section">
+        <h2>Order Your Favorite Bakery Items</h2>
+        <form action="order-process.php" method="POST">
+            <label for="product">Select Product:</label>
+            <select name="product" id="product">
+                <option value="bread">Fresh Bread - $5.00</option>
+                <option value="cake">Delicious Cake - $15.00</option>
+            </select>
+
+            <label for="quantity">Quantity:</label>
+            <input type="number" name="quantity" id="quantity" min="1" value="1" required>
+
+            <label for="delivery">Delivery Method:</label>
+            <select name="delivery" id="delivery">
+                <option value="pickup">Pickup</option>
+                <option value="delivery">Delivery</option>
+            </select>
+
+            <button type="submit" class="btn">Place Order</button>
+        </form>
+    </section>
+</body>
+
+<footer>
+    <div class="footer-container">
+      <!-- Contact Us -->
+      <div class="footer-section">
+        <h3>Contact Us</h3>
+        <p>Email: <a href="mailto:stanleymakanga45@gmail.com">stanleymakanga45@gmail.com</a></p>
+        <p>Phone: +254746640048</p>
+        <p>Address: 123 SmartBuy Street, Nairobi, Kenya</p>
+      </div>
+  
+      <!-- Quick Links -->
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <p><a href="index.html">Back Home</a></p>
+        <p><a href="faq.html">FAQ</a></p>
+        <p><a href="blog.html">Blog</a></p>
+        <p><a href="feedback.html">Feedback & Reviews</a></p>
+        <p><a href="about.html">About Us</a></p>
+      </div>
+  
+      <!-- Social Media -->
+      <div class="footer-section">
+        <h3>Follow Us</h3>
+        <p><a href="https://instagram.com/7_stanley7" target="_blank"><img src="insta.jpg" width="30" alt="Instagram"></a></p>
+        <p><a href="https://www.facebook.com/its.stano" target="_blank"><img src="facebook.png" width="30" alt="Facebook"></a></p>
+        <p><a href="https://x.com/StanleyMakanga2" target="_blank"><img src="x.png" width="30" alt="X(Twitter)"></a></p>
+        <p><a href="https://linkedin.com/in/stanley-makanga-974393349/" target="_blank"><img src="linkedin.png" width="30" alt="Linkedin"></a></p>
+      </div>
+  
+      <!-- Newsletter Subscription -->
+      <div class="footer-section">
+        <h3>Subscribe to Our Newsletter</h3>
+        <form class="newsletter-form">
+          <input type="email" placeholder="Enter your email" required>
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2023-2025 Stanley. All rights reserved.</p>
+    </div>
+  </footer>
+</html>

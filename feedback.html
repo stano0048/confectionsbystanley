@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leave a review</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="logo.webp">
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .container { max-width: 600px; margin: auto; }
+        textarea, input { width: 100%; padding: 10px; margin: 5px 0; }
+        button { padding: 10px; background: green; color: white; border: none; cursor: pointer; margin: 5px; }
+        .review { border: 1px solid #ddd; padding: 10px; margin: 10px 0; background: #f9f9f9; position: relative; opacity: 0; transform: translateY(20px); animation: fadeIn 0.5s forwards; }
+        .actions { margin-top: 5px; }
+        .like, .dislike, .reply, .edit, .delete { cursor: pointer; color: blue; margin-right: 10px; }
+        .reply-section { margin-left: 20px; border-left: 2px solid #ddd; padding-left: 10px; }
+        .hidden { display: none; }
+        
+        @keyframes fadeIn {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+
+footer {
+    background-color: #2c2c2c;
+    color: white;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 20px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 250px;
+}
+
+.footer-section h3 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    color: #ffcc00;
+}
+
+.footer-section p,
+.footer-section a {
+    font-size: 16px;
+    color: #ddd;
+    text-decoration: none;
+}
+
+.footer-section a:hover {
+    color: #ffcc00;
+    text-decoration: underline;
+}
+
+/* Social Media Icons */
+.footer-section img {
+    margin-top: 5px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.footer-section img:hover {
+    transform: scale(1.2);
+}
+
+/* Newsletter */
+.newsletter-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.newsletter-form input {
+    width: 80%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.newsletter-form button {
+    width: 85%;
+    padding: 10px;
+    background-color: #ffcc00;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+}
+
+.newsletter-form button:hover {
+    background-color: #d4a500;
+}
+
+/* Footer Bottom */
+.footer-bottom {
+    background-color: #222;
+    padding: 10px;
+    margin-top: 20px;
+    font-size: 14px;
+}
+    </style>
+</head>
+<body style="background-image: url('background7.webp'); background-size: cover; background-position: center; width: 100%; height: auto;">
+    <div class="container">
+        <h2 style="background-color: whitesmoke;">Leave a review (<span id="commentCount">0</span>)</h2>
+        <input type="text" id="name" placeholder="Your Name (or leave blank for anonymous)">
+        <textarea id="comment" placeholder="Write your review..."></textarea>
+        <button onclick="submitReview()">Post Review</button>
+        <button id="toggleButton" onclick="toggleReviews()">Show Reviews</button>
+        <button onclick="filterReviews('recent')">Most Recent</button>
+        <button onclick="filterReviews('old')">Oldest</button>
+        
+        <h3 style="background-color: white;">Customer Reviews</h3>
+        <div id="reviews" class="hidden"></div>
+        <button id="showMore" class="hidden" onclick="showMoreReviews()">Load more comments</button>
+    </div>
+
+    <script>
+        let reviewsPerPage = 10;
+        let currentPage = 0;
+        let filteredReviews = [];
+        
+        function toggleReviews() {
+            let reviewSection = document.getElementById('reviews');
+            let toggleButton = document.getElementById('toggleButton');
+            if (reviewSection.classList.contains('hidden')) {
+                reviewSection.classList.remove('hidden');
+                toggleButton.innerText = 'Hide Reviews';
+            } else {
+                reviewSection.classList.add('hidden');
+                toggleButton.innerText = 'Show Reviews';
+            }
+        }
+        
+        function submitReview() {
+            let name = document.getElementById('name').value.trim();
+            let comment = document.getElementById('comment').value.trim();
+            if (!comment) return alert('Please enter a review.');
+            
+            let date = new Date();
+            let timestamp = date.toLocaleString();
+            let review = { name: name || 'Anonymous', comment, likes: 0, dislikes: 0, replies: [], timestamp };
+            let reviews = JSON.parse(localStorage.getItem('reviews')) || [];
+            reviews.unshift(review);
+            localStorage.setItem('reviews', JSON.stringify(reviews));
+            
+            displayReviews();
+            document.getElementById('name').value = '';
+            document.getElementById('comment').value = '';
+        }
+
+        function displayReviews() {
+            let reviews = JSON.parse(localStorage.getItem('reviews')) || [];
+            filteredReviews = reviews;
+            currentPage = 0;
+            renderReviews();
+        }
+
+        function renderReviews() {
+            let reviewSection = document.getElementById('reviews');
+            reviewSection.innerHTML = '';
+            
+            document.getElementById('commentCount').innerText = filteredReviews.length;
+            let start = currentPage * reviewsPerPage;
+            let end = start + reviewsPerPage;
+            let reviewsToShow = filteredReviews.slice(start, end);
+            
+            reviewsToShow.forEach((review, index) => {
+                if (!review.replies) review.replies = []; 
+                let reviewDiv = document.createElement('div');
+                reviewDiv.classList.add('review');
+                reviewDiv.innerHTML = `<strong>${review.name}:</strong> <p>${review.comment}</p>
+                <small>Posted on: ${review.timestamp}</small>
+                <div class="actions">
+                    <span class="like" onclick="likeComment(${start + index})">👍 ${review.likes}</span>
+                    <span class="dislike" onclick="dislikeComment(${start + index})">👎 ${review.dislikes}</span>
+                    <span class="reply" onclick="replyComment(${start + index})">💬 Reply</span>
+                    <span class="edit" onclick="editComment(${start + index})">✏️ Edit</span>
+                    <span class="delete" onclick="deleteComment(${start + index})">❌ Delete</span>
+                </div>
+                <div class="reply-section" id="replies-${start + index}"></div>`;
+                reviewSection.appendChild(reviewDiv);
+                
+                review.replies.forEach(reply => {
+                    let replyDiv = document.createElement('div');
+                    replyDiv.classList.add('reply-section');
+                    replyDiv.innerHTML = `<strong>${reply.name}:</strong> <p>${reply.comment}</p>`;
+                    document.getElementById(`replies-${start + index}`).appendChild(replyDiv);
+                });
+            });
+            document.getElementById('showMore').classList.toggle('hidden', end >= filteredReviews.length);
+        }
+        
+        function editComment(index) {
+            let reviews = JSON.parse(localStorage.getItem('reviews')) || [];
+            let newComment = prompt("Edit your comment:", reviews[index].comment);
+            if (newComment) {
+                reviews[index].comment = newComment;
+                localStorage.setItem('reviews', JSON.stringify(reviews));
+                displayReviews();
+            }
+        }
+
+        function deleteComment(index) {
+            let reviews = JSON.parse(localStorage.getItem('reviews')) || [];
+            reviews.splice(index, 1);
+            localStorage.setItem('reviews', JSON.stringify(reviews));
+            displayReviews();
+        }
+
+        function showMoreReviews() {
+            currentPage++;
+            renderReviews();
+        }
+
+        window.onload = displayReviews;
+    </script>
+</body>
+<footer>
+  <div class="footer-container">
+    <!-- Contact Us -->
+    <div class="footer-container">
+        <!-- Contact Us -->
+        <div class="footer-section">
+          <h3>Contact Us</h3>
+          <div style="margin-bottom: 20px;">
+              <a href="mailto:stanleymakanga45@gmail.com" style="display: flex; align-items: center; text-decoration: none; background-color: #D14836; color: white; padding: 10px 15px; border-radius: 5px; width: fit-content;">
+                  <img src="email.png" alt="Gmail Logo" style="width: 24px; height: 24px; margin-right: 10px;">
+                  <span>Email Us</span>
+              </a>
+          </div>
+          
+          <a href="https://wa.me/254746640048" target="_blank" style="display: flex; align-items: center; text-decoration: none; background-color: #25D366; color: white; padding: 10px 15px; border-radius: 5px; width: fit-content;">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Logo" style="width: 24px; height: 24px; margin-right: 10px;">
+              <span>Chat with us</span>
+          </a>
+          
+          <p>Address: Lenana, along Ngong road Nairobi, Kenya</p>
+        </div>
+
+    <!-- Quick Links -->
+    <div class="footer-section">
+      <h3>Quick Links</h3>
+      <p><a href="index.html">Back Home</a></p>
+      <p><a href="faq.html">FAQ</a></p>
+      <p><a href="blog.html">Blog</a></p>
+      <p><a href="feedback.html">Feedback & Reviews</a></p>
+      <p><a href="about.html">About Us</a></p>
+    </div>
+
+    <!-- Social Media -->
+    <div class="footer-section">
+      <h3>Follow Us</h3>
+      <p><a href="https://instagram.com/7_stanley7" target="_blank">Instagram</a></p>
+      <p><a href="https://www.facebook.com/its.stano" target="_blank">Facebook</a></p>
+      <p><a href="https://x.com/StanleyMakanga2" target="_blank">X (Twitter)</a></p>
+      <p><a href="https://linkedin.com/in/stanley-makanga-974393349/" target="_blank">LinkedIn</a></p>
+    </div>
+
+    <!-- Newsletter Subscription -->
+    <div class="footer-section">
+      <h3>Subscribe to Our Newsletter</h3>
+      <form class="newsletter-form">
+        <input type="email" placeholder="Enter your email" required>
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2023-2025 Stanley. All rights reserved.</p>
+  </div>
+</footer>
+</html>

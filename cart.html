@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Cart</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="logo.webp">
+    <style>
+body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            text-align: center;
+            padding: 20px;
+        }
+        table {
+            width: 80%;
+            margin: auto;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+        }
+        th {
+            background: #ff9800;
+            color: white;
+        }
+        tr:hover {
+            background: #f1f1f1;
+        }
+        button {
+            background: red;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: darkred;
+        }
+        .checkout {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: green;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+/* Footer */
+footer {
+    background: rgba(0, 0, 0, 0.8);
+    padding: 20px 0;
+    margin-top: 30px;
+}
+.footer-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    max-width: 1000px;
+    margin: auto;
+}
+.footer-section {
+    width: 200px;
+    text-align: left;
+}
+.footer-section h3 {
+    color: #ffcc00;
+}
+.footer-section p, .footer-section a {
+    color: #ccc;
+    text-decoration: none;
+    font-size: 14px;
+}
+.footer-section a:hover {
+    color: #ffcc00;
+}
+.footer-bottom {
+    text-align: center;
+    margin-top: 10px;
+    color: #fff;
+}
+
+    </style>
+</head>
+<body>
+    <h1>Your Cart</h1>
+    <table id="cart-table">
+        <tr><th>Product</th><th>Price</th><th>Quantity</th><th>Total</th><th>Action</th></tr>
+    </table>
+    <h3>Total: KES<span id="cart-total">0</span></h3>
+    <a href="checkout.html" class="checkout">Proceed to Checkout</a>
+    <script>
+        function displayCart() {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            let table = document.getElementById('cart-table');
+            let total = 0;
+            table.innerHTML = '<tr><th>Product</th><th>Price</th><th>Quantity</th><th>Total</th><th>Action</th></tr>';
+            cart.forEach((item, index) => {
+                let row = table.insertRow();
+                row.insertCell(0).innerText = item.name;
+                row.insertCell(1).innerText = `KES${ item.price}`;
+                row.insertCell(2).innerText = item.quantity;
+                row.insertCell(3).innerText = `KES${ item.price * item.quantity}`;
+                let removeBtn = document.createElement('button');
+                removeBtn.innerText = 'Remove';
+                removeBtn.onclick = function() {
+                    removeItem(index);
+                };
+                row.insertCell(4).appendChild(removeBtn);
+                total += item.price * item.quantity;
+            });
+            document.getElementById('cart-total').innerText = total;
+        }
+        function removeItem(index) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.splice(index, 1);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            displayCart();
+        }
+        displayCart();
+    </script>
+</body>
+<footer>
+    <div class="footer-container">
+      <!-- Contact Us -->
+      <div class="footer-container">
+        <!-- Contact Us -->
+        <div class="footer-section">
+          <h3>Contact Us</h3>
+          <div style="margin-bottom: 20px;">
+              <a href="mailto:stanleymakanga45@gmail.com" style="display: flex; align-items: center; text-decoration: none; background-color: #D14836; color: white; padding: 10px 15px; border-radius: 5px; width: fit-content;">
+                  <img src="email.png" alt="Gmail Logo" style="width: 24px; height: 24px; margin-right: 10px;">
+                  <span>Email Us</span>
+              </a>
+          </div>
+          
+          <a href="https://wa.me/254746640048" target="_blank" style="display: flex; align-items: center; text-decoration: none; background-color: #25D366; color: white; padding: 10px 15px; border-radius: 5px; width: fit-content;">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Logo" style="width: 24px; height: 24px; margin-right: 10px;">
+              <span>Chat with us</span>
+          </a>
+          
+          <p>Address: Lenana, along Ngong road Nairobi, Kenya</p>
+        </div>
+  
+      <!-- Quick Links -->
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <p><a href="index.html">Back Home</a></p>
+        <p><a href="faq.html">FAQ</a></p>
+        <p><a href="blog.html">Blog</a></p>
+        <p><a href="feedback.html">Feedback & Reviews</a></p>
+        <p><a href="about.html">About Us</a></p>
+      </div>
+  
+      <!-- Social Media -->
+      <div class="footer-section">
+        <h3>Follow Us</h3>
+        <p><a href="https://instagram.com/7_stanley7" target="_blank"><img src="insta.jpg" width="30" alt="Instagram"></a></p>
+        <p><a href="https://www.facebook.com/its.stano" target="_blank"><img src="facebook.png" width="30" alt="Facebook"></a></p>
+        <p><a href="https://x.com/StanleyMakanga2" target="_blank"><img src="x.png" width="30" alt="X(Twitter)"></a></p>
+        <p><a href="https://linkedin.com/in/stanley-makanga-974393349/" target="_blank"><img src="linkedin.png" width="30" alt="Linkedin"></a></p>
+      </div>
+  
+      <!-- Newsletter Subscription -->
+      <div class="footer-section">
+        <h3>Subscribe to Our Newsletter</h3>
+        <form class="newsletter-form">
+          <input type="email" placeholder="Enter your email" required>
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2023-2025 Stanley. All rights reserved.</p>
+    </div>
+  </footer>
+</html>

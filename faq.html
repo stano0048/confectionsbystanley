@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confections by Stanley - FAQ</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="logo.webp">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f8f8f8;
+        }
+        .faq-container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #d2691e;
+        }
+        .faq-item {
+            border-bottom: 1px solid #ddd;
+            padding: 10px 0;
+        }
+        .faq-question {
+            cursor: pointer;
+            font-weight: bold;
+            color: #d2691e;
+        }
+        .faq-answer {
+            display: none;
+            margin-top: 5px;
+            color: #333;
+            transition: opacity 0.5s ease-in-out;
+        }
+    </style>
+    <script>
+        function toggleAnswer(index) {
+            let allAnswers = document.querySelectorAll(".faq-answer");
+            allAnswers.forEach(answer => {
+                answer.style.display = "none";
+                answer.style.opacity = "0";
+            });
+            let selectedAnswer = document.getElementById("answer-" + index);
+            selectedAnswer.style.display = "block";
+            setTimeout(() => {
+                selectedAnswer.style.opacity = "1";
+            }, 10);
+        }
+    </script>
+</head>
+<body>
+    <div class="faq-container">
+        <h1>Frequently Asked Questions</h1>
+        
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleAnswer(1)">What are your opening hours?</div>
+            <div class="faq-answer" id="answer-1">We are open from 8:00am to 9:00pm on Monday to Friday, 9:00am to 6:00pm Saturdays and 12:00pm to 5:30pm on Sundays and public holidays.</div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleAnswer(2)">Where are you located?</div>
+            <div class="faq-answer" id="answer-2">Our bakery is located at Lenana, opposite The Hub Karen, along Ngong road, Nairobi. You can also find us on Google Maps.</div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleAnswer(3)">Do you offer delivery services?</div>
+            <div class="faq-answer" id="answer-3">Yes! We offer free delivery within Nairobi city and it's neighborhood for orders above KES 3,000. We also deliver across the country. Delivery charges across the country may apply based on location.</div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleAnswer(4)">Can I place an order online?</div>
+            <div class="faq-answer" id="answer-4">Yes, you can order directly from our website and choose either pickup or delivery.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleAnswer(5)">What payment methods do you accept?</div>
+            <div class="faq-answer" id="answer-5">We accept M-Pesa, credit/debit cards, and cash on delivery for in-store pickups.</div>
+        </div>
+    </div>
+</body>
+
+<footer>
+  <div class="footer-container">
+    <!-- Contact Us -->
+    <div class="footer-section">
+      <h3>Contact Us</h3>
+      <div style="margin-bottom: 20px;">
+          <a href="mailto:stanleymakanga45@gmail.com" style="display: flex; align-items: center; text-decoration: none; background-color: #D14836; color: white; padding: 10px 15px; border-radius: 5px; width: fit-content;">
+              <img src="email.png" alt="Gmail Logo" style="width: 24px; height: 24px; margin-right: 10px;">
+              <span>Email Us</span>
+          </a>
+      </div>
+      
+      <a href="https://wa.me/254746640048" target="_blank" style="display: flex; align-items: center; text-decoration: none; background-color: #25D366; color: white; padding: 10px 15px; border-radius: 5px; width: fit-content;">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Logo" style="width: 24px; height: 24px; margin-right: 10px;">
+          <span>Chat with us</span>
+      </a>
+      
+      <p>Address: Lenana, along Ngong road Nairobi, Kenya</p>
+    </div>
+
+    <!-- Quick Links -->
+    <div class="footer-section">
+      <h3>Quick Links</h3>
+      <p><a href="index.html">Back Home</a></p>
+      <p><a href="faq.html">FAQ</a></p>
+      <p><a href="blog.html">Blog</a></p>
+      <p><a href="feedback.html">Feedback & Reviews</a></p>
+      <p><a href="about.html">About Us</a></p>
+    </div>
+
+    <!-- Social Media -->
+    <div class="footer-section">
+      <h3>Follow Us</h3>
+      <p><a href="https://instagram.com/7_stanley7" target="_blank"><img src="insta.jpg" width="30" alt="Instagram"></a></p>
+      <p><a href="https://www.facebook.com/its.stano" target="_blank"><img src="facebook.png" width="30" alt="Facebook"></a></p>
+      <p><a href="https://x.com/StanleyMakanga2" target="_blank"><img src="x.png" width="30" alt="X(Twitter)"></a></p>
+      <p><a href="https://linkedin.com/in/stanley-makanga-974393349/" target="_blank"><img src="linkedin.png" width="30" alt="Linkedin"></a></p>
+    </div>
+
+    <!-- Newsletter Subscription -->
+    <div class="footer-section">
+      <h3>Subscribe to Our Newsletter</h3>
+      <form class="newsletter-form">
+        <input type="email" placeholder="Enter your email" required>
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2023-2025 Stanley. All rights reserved.</p>
+  </div>
+</footer>
+</html>
