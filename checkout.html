@@ -72,7 +72,7 @@
                 <select id="payment" onchange="togglePaymentFields()">
                   <option value="select" selected disabled>Select mode of payment</option>
                     <option value="mpesa">M-Pesa</option>
-                    <option value="credit_card">Credit Card</option>
+                    
                 </select>
 
                 
@@ -80,18 +80,6 @@
                     <label for="mpesa-number">M-Pesa Number:</label>
                     <input type="text" id="mpesa-number" placeholder="Enter your M-Pesa number">
                 </div>
-                
-                <div id="card-details" class="payment-details">
-                    <label for="card-number">Card Number:</label>
-                    <input type="text" id="card-number" placeholder="Enter your card number">
-                    
-                    <label for="expiry">Expiry Date:</label>
-                    <input type="text" id="expiry" placeholder="MM/YY">
-                    
-                    <label for="cvv">CVV:</label>
-                    <input type="text" id="cvv" placeholder="CVV">
-                </div>
-                
                 <h3>Total Amount: KES <span id="total-amount">0</span></h3>
                 
                 <button type="submit">Place Order</button>
